@@ -12,7 +12,7 @@ These instructions presume a KDE Plasma desktop although most of this is transfe
 
 The first problem on Tumbleweed is that it doesn't even ship with a `systemd` unit service to start `ssh-agent`.  Looking in `/usr/lib/systemd/user` I can see `gpg-agent-ssh.service` exists along with `gpg-agent.servce` (although both are disabled by default) which offers some evidence that the "OpenSUSE way" is to use `gpg-agent` and its SSH support instead. Unfortunately I can't find any documentation anywhere supporting this theory.  So, we're going to create a `systemd` unit file that starts `ssh-agent`. 
 
-The second problem is that, under Wayland, the `WAYLAND_DISPLAY` environment variable doesn't get set until after the desktop environment has run its startup scripts (for KDE Plasma these are the scripts in `~/.config/plasma-workspace/env`).  If you Google around, you'll find [blog posts](https://dev.to/manekenpix/kde-plasma-ssh-keys-111e) and Reddit comments telling you to start `ssh-agent` in `~/.config/plasma-workspace/env` entries and to set the `SSH_ASKPASS` environment variable and to run `ssh-add` from Plasma's "Autostart".   This will only work in X11.  The problem was identified all the way back in 2015, in this bug report:
+The second problem is that, under Wayland, the `WAYLAND_DISPLAY` environment variable doesn't get set until after the desktop environment has run its startup scripts (for KDE Plasma these are the scripts in `~/.config/plasma-workspace/env`).  If you Google around, you'll find [blog posts](https://dev.to/manekenpix/kde-plasma-ssh-keys-111e) and Reddit comments telling you to start `ssh-agent` in `~/.config/plasma-workspace/env` entries and to set the `SSH_ASKPASS` environment variable and to run `ssh-add` from Plasma's "Autostart".   This will only work in X11.  Under Wayland, `ssh(1)` and `ssh-add(1)` and `ssh-keygen` will [skip firing](https://github.com/openssh/openssh-portable/blob/master/readpass.c#L265) `ssh-askpass` due to the lack of a `WAYLAND_DISPLAY` value.   The problem was identified all the way back in 2015, in this bug report:
 
 https://kde-bugs-dist.kde.narkive.com/tHqRlvxr/plasmashell-bug-380311-new-no-way-to-launch-ssh-agent-with-interactivity-under-wayland
 
@@ -108,7 +108,9 @@ Finally, reboot.
 
 ## Final Thoughts
 
-This setup is sufficient for me because I use SK keys tied to my Yubikey, but I do not use regular keys that have passphrases.  For that situation, you may want to use Kwallet to store your passphrases, allowing your keys stored within your agent to be unlocked at login and used throughout your session.  While I've never done it myself, it's my understanding that you just need to launch Kwallet and enable it. c
+This setup is sufficient for me because I use SK keys tied to my Yubikey, but I do not use regular keys that have passphrases.  For that situation, you may want to use Kwallet to store your passphrases, allowing your keys stored within your agent to be unlocked at login and used throughout your session.  While I've never done it myself, it's my understanding that you just need to launch Kwallet and enable it. 
+
+The help I received from my good friend, and very talented engineer, [Drew Vogel](https://www.linkedin.com/in/drewpvogel/) was invaluable as I was working through this problem.  
 
 
 
