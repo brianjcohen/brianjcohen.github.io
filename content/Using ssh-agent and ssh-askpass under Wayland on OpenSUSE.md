@@ -4,13 +4,15 @@ description:
 date: 2025-04-03T09:54:33+00:00
 draft: false
 ---
+## Background
+
 As of early 2025, out of the box, I found that the steps in this article were necessary in order to get OpenSUSE Tumbleweed running `ssh-agent` at boot, my keys loaded at login, and a graphical `ssh-askpass` configured to fire when user interaction is required (such as for keys that contain passphrases, or SK keys tied to a physical security device such as Yubikey). 
 
 These instructions presume a KDE Plasma desktop although most of this is transferable to other desktop environments with a few tweaks.  I'm also guessing that some of this is helpful to users of other Linux distributions that use `systemd`. 
 
 The first problem on Tumbleweed is that it doesn't even ship with a `systemd` unit service to start `ssh-agent`.  Looking in `/usr/lib/systemd/user` I can see `gpg-agent-ssh.service` exists along with `gpg-agent.servce` (although both are disabled by default) which offers some evidence that the "OpenSUSE way" is to use `gpg-agent` and its SSH support instead. Unfortunately I can't find any documentation anywhere supporting this theory.  So, we're going to create a `systemd` unit file that starts `ssh-agent`. 
 
-The second problem is that, under Wayland, the `WAYLAND_DISPLAY` environment variable doesn't get set until after the desktop environment has run its startup scripts (for KDE Plasma these are the scripts in `~/.config/plasma-workspace/env`).  If you Google around, you'll find blog posts and Reddit comments telling you to start `ssh-agent` in `~/.config/plasma-workspace/env` entries and to set the `SSH_ASKPASS` environment variable and to run `ssh-add` from Plasma's "Autostart".   This will only work in X11.  The problem was identified all the way back in 2015, in this bug report:
+The second problem is that, under Wayland, the `WAYLAND_DISPLAY` environment variable doesn't get set until after the desktop environment has run its startup scripts (for KDE Plasma these are the scripts in `~/.config/plasma-workspace/env`).  If you Google around, you'll find [blog posts](https://dev.to/manekenpix/kde-plasma-ssh-keys-111e) and Reddit comments telling you to start `ssh-agent` in `~/.config/plasma-workspace/env` entries and to set the `SSH_ASKPASS` environment variable and to run `ssh-add` from Plasma's "Autostart".   This will only work in X11.  The problem was identified all the way back in 2015, in this bug report:
 
 https://kde-bugs-dist.kde.narkive.com/tHqRlvxr/plasmashell-bug-380311-new-no-way-to-launch-ssh-agent-with-interactivity-under-wayland
 
@@ -18,6 +20,8 @@ The bug reporter, along with David and Nate from the KDE team identified that yo
 
 > putting ssh-agent between the two and being sure to run  
 > dbus-update-activation-env --systemd at the end of the script would then work.
+
+## Setup
 
 Okay let's wire this up.  First, we want to set some environment variables EARLY. I'm going to use `/etc/profile.d` although my sense is that we could also use `environment.d`. 
 
@@ -92,6 +96,14 @@ And mark as executable.
 `chmod u+x /home/brian/store/script/autostart-ssh-add.sh`
 
 Here I have it explicitly loading two of my keys, both of which are -SK keys tied to my Yubikey. You can put whatever keys you want here. 
+
+Finally, reboot.  
+
+`sudo reboot`
+
+## Final Thoughts
+
+This setup is sufficient for me because I use SK keys tied to my Yubikey, but I do not use regular keys that have passphrases.  For that situation, you may want to use Kwallet to store your passphrases, allowing your keys stored within your agent to be unlocked at login and used throughout your session.  While I've never done it myself, it's my understanding that you just need to launch Kwallet and enable it. c
 
 
 
