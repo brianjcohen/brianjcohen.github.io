@@ -1,4 +1,9 @@
-
+---
+title: "Apple Magic Keyboard on Linux"
+description: 
+date: "2025-04-03T11:47:06+00:00"
+draft: true
+---
 I have mixed feelings about Apple products in general, but I'm all-in on their keyboards and have been for 20 years.  I loved the old wired Aluminum keyboards but unfortunately they don't make 'em anymore.  When I needed a new one, I bought the Bluetooth "Magic Keyboard" they now sell in its place. 
 
 Unfortunately, virtually no online documentation for this keyboard is useful; it’s all Mac-specific. 
