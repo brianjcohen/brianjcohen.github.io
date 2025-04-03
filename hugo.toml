@@ -1,7 +1,84 @@
 baseURL = 'https://brianjcohen.github.io/'
 languageCode = 'en-us'
 title = 'Thinking and Fixing'
-theme = 'ananke'
+theme = 'typo'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+# Google analytics code
+googleAnalytics = "G-xxxxxxxxx"
+
+[taxonomies]
+tag = 'tags'
+
+[params]
+# Meta description
+description = "A Tech Blog"
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'default'
+hideHeader = false
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'Hi!'
+homeIntroContent = """
+I'm a Software Engineer in the State of New York, USA.  Posts are mostly about Linux on the desktop but, hey, you never know.
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Linux'
+homeCollection = 'linux'
+
+# Lists parameters
+paginationSize = 100
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+[params.breadcrumbs]
+enabled = true
+showCurrentPage = true
+home = "Home"
+
+# Social icons
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/brian-j-cohen/"
+
+#[[params.social]]
+#name = "medium"
+#url = "https://medium.com/@user"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/brianjcohen"
+
+# Main menu pages
+[[params.menu]]
+name = "home"
+url = "/"
+
+[[params.menu]]
+name = "linux"
+url = "/linux"
+
+#[[params.menu]]
+#name = "about"
+#url = "/about"
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'algol'
+
+# Giscus comments
+[params.giscus]
+enable = false
+repo = "user/repo"
+repoid = "repoId"
+category = "General"
+categoryid = "categoryId"
+mapping = "pathname"
+theme = "preferred_color_scheme"
