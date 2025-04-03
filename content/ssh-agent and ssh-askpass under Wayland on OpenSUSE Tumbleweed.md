@@ -26,12 +26,12 @@ The bug reporter, along with David and Nate from the KDE team identified that yo
 Okay let's wire this up.  First, we want to set some environment variables EARLY. I'm going to use `/etc/profile.d` although my sense is that we could also use `environment.d`. 
 
 Create `/etc/profile.d/sshaskpass.sh`:
-
-`#!/bin/bash`  
-`export QT_QPA_PLATFORM="wayland"`  
-`export SSH_ASKPASS_REQUIRE=prefer`  
-`export SSH_ASKPASS=/usr/libexec/ssh/ksshaskpass`
-
+```
+#!/bin/bash
+export QT_QPA_PLATFORM="wayland"  
+export SSH_ASKPASS_REQUIRE=prefer
+export SSH_ASKPASS=/usr/libexec/ssh/ksshaskpass
+```
 * `SSH_ASKPASS_REQUIRE` is set to `prefer`, which will be an instruction to `ssh` to make use of a graphical askpass utility (if it can) rather than prompting you in the terminal. 
 * `SSH_ASKPASS` is set to the full path of our favorite compatible askpass implementation.
 * `QT_QPA_PLATFORM` is set to `wayland` because... well actually I'm not really sure why, I copied this from somewhere.  
@@ -40,30 +40,32 @@ Next, we create a `systemd` unit service for my user:
 
 In `~/.config/systemd/user/ssh-agent.service`:
 
-`[Unit]`  
-`Description=SSH Key Agent`  
-`# Explicitly place between kwin and plasmashell`  
-`After=plasma-kwin_wayland.service`  
-`Before=plasma-plasmashell.service`  
-`PartOf=graphical-session.target`  
+```
+[Unit]
+Description=SSH Key Agent
+# Explicitly place between kwin and plasmashell
+After=plasma-kwin_wayland.service  
+Before=plasma-plasmashell.service
+PartOf=graphical-session.target  
   
-`[Service]`  
-`Type=simple`  
-`# Ensure clean environment and socket`  
-`ExecStartPre=/bin/rm -f %t/ssh-agent.socket`  
-`ExecStartPre=/usr/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_RUNTIME_DIR SSH_ASKPASS SSH_ASKPASS_REQUIRE`  
+[Service]
+Type=simple
+# Ensure clean environment and socket
+ExecStartPre=/bin/rm -f %t/ssh-agent.socket
+ExecStartPre=/usr/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_RUNTIME_DIR SSH_ASKPASS SSH_ASKPASS_REQUIRE
   
-`Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket`  
-`ExecStart=/usr/bin/ssh-agent -a ${SSH_AUTH_SOCK} -D`  
-`ExecStop=/usr/bin/ssh-agent -k`  
-`ExecStopPost=/bin/rm -f %t/ssh-agent.socket`  
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket 
+ExecStart=/usr/bin/ssh-agent -a ${SSH_AUTH_SOCK} -D
+ExecStop=/usr/bin/ssh-agent -k
+ExecStopPost=/bin/rm -f %t/ssh-agent.socket
   
-`# Restart if unexpectedly dies`  
-`Restart=on-failure`  
-`RestartSec=5`  
+# Restart if unexpectedly dies
+Restart=on-failure  
+RestartSec=5  
   
-`[Install]`  
-`WantedBy=graphical-session.target`
+[Install]
+WantedBy=graphical-session.target
+```
 
 And enable it:
 
@@ -77,19 +79,22 @@ Notice a few things:
 Next, we configure Plasma to load our keys into the agent at login. Of course you should replace `brian` with your username, and of course you can store your autostart script wherever you want. You can also name it whatever you want. 
 
 In `~/.config/autostart/ssh-add.desktop`:
-
-`[Desktop Entry]`  
-`Exec=/home/brian/store/script/autostart-ssh-add.sh`  
-`Icon=dialog-scripts`  
-`Name=ssh-add.sh`  
-`Type=Application`  
-`X-KDE-AutostartScript=true`
+```
+[Desktop Entry]
+Exec=/home/brian/store/script/autostart-ssh-add.sh  
+Icon=dialog-scripts
+Name=ssh-add.sh
+Type=Application
+X-KDE-AutostartScript=true
+```
 
 In `/home/brian/store/script/autostart-ssh-add.sh`:
 
-`#!/bin/bash`
-`ssh-add -q ~/.ssh/id_ecdsa_sk`
-`ssh-add -q ~/.ssh/id_ed25519_sk`
+```
+#!/bin/bash
+ssh-add -q ~/.ssh/id_ecdsa_sk
+ssh-add -q ~/.ssh/id_ed25519_sk
+```
 
 And mark as executable.  
 
