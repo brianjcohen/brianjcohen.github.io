@@ -11,6 +11,7 @@ I have mixed feelings about Apple products in general, but I'm all-in on their k
 Unfortunately, virtually no online documentation for this keyboard is useful; it’s all Mac-specific. 
 
 ## Solution
+
 To pair (or re-pair) this device with a Linux machine:
 
 1. Turn the hardware switch off (it's up near the number paid on the front edge)

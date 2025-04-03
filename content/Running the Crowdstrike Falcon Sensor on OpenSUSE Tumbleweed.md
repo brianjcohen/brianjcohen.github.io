@@ -11,7 +11,7 @@ https://www.crowdstrike.com/tech-hub/endpoint-security/installing-falcon-sensor-
 
 For OpenSUSE Tumbleweed, install the latest release described as “SLES” but not as “IBM zLinux”
 
-`zypper install` will fail because it depends on libopenssl1_1, which nothing provides for Tumbleweed.  I was able to locate packages here (just chose a source, Expert download, binary packages): https://software.opensuse.org/package/libopenssl1_1 
+`zypper install` will fail because it depends on `libopenssl1_1`, which doesn't exist in Tumbleweed's repositories anymore.  I was able to locate packages here (just chose a source, Expert download, binary packages): https://software.opensuse.org/package/libopenssl1_1 
 
 Both the openssl and falcon packages are unsigned so install them both with `zypper install -i` or choose 'i' when prompted. 
 
