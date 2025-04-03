@@ -22,7 +22,7 @@ colorPalette = 'default'
 hideHeader = false
 
 # Intro on main page, content is markdown
-homeIntroTitle = 'Hi!'
+homeIntroTitle = ''
 homeIntroContent = """
 I'm a Software Engineer in the State of New York, USA.  Posts are mostly about Linux on the desktop but, hey, you never know.
 """
