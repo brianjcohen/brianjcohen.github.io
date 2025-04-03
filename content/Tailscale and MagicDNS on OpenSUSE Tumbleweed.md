@@ -20,11 +20,11 @@ And if you really want to go down the rabbit hole, read this: https://tailscale.
 
 ## Solution
 
-`zypper install systemd-network`
+`sudo zypper install systemd-network`
 
-`systemctl enable systemd-resolved`
+`sudo systemctl enable systemd-resolved`
 
-`systemctl start systemd-resolved`
+`sudo systemctl start systemd-resolved`
 
 `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
 
