@@ -1,6 +1,6 @@
 baseURL = 'https://brianjcohen.github.io/'
 languageCode = 'en-us'
-title = 'The Walking Imposter Syndrome'
+title = 'Thinking and Fixing'
 theme = 'ananke'
 [caches]
   [caches.images]
