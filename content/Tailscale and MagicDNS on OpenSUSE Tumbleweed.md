@@ -21,8 +21,11 @@ And if you really want to go down the rabbit hole, read this: https://tailscale.
 ## Solution
 
 `zypper install systemd-network`
+
 `systemctl enable systemd-resolved`
+
 `systemctl start systemd-resolved`
+
 `ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf`
 
 Now, reboot. No, really, reboot. Do not just restart NetworkManager and call it a day. Trust me.
