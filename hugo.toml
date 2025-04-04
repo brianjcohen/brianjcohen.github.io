@@ -7,14 +7,14 @@ theme = 'typo'
     dir = ':cacheDir/images'
 
 # Google analytics code
-googleAnalytics = "G-xxxxxxxxx"
+# googleAnalytics = "G-xxxxxxxxx"
 
 [taxonomies]
 tag = 'tags'
 
 [params]
 # Meta description
-description = "A Tech Blog"
+description = "Thoughts I've had and things I've learned"
 
 # Appearance settings
 theme = 'auto'
@@ -28,8 +28,8 @@ I'm a Software Engineer in the State of New York, USA.  Posts are mostly about L
 """
 
 # Collection to display on home
-homeCollectionTitle = 'Linux'
-homeCollection = 'linux'
+homeCollectionTitle = 'Posts'
+homeCollection = 'posts'
 
 # Lists parameters
 paginationSize = 100
@@ -61,8 +61,8 @@ name = "home"
 url = "/"
 
 [[params.menu]]
-name = "linux"
-url = "/linux"
+name = "posts"
+url = "/posts"
 
 #[[params.menu]]
 #name = "about"

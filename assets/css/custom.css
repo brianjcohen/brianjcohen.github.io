@@ -1,0 +1,19 @@
+.summary-tags {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.summary-tags a {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--secondary-bg);
+  border-radius: 3px;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.summary-tags a:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-bg);
+}

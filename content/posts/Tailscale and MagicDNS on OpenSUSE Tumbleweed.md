@@ -1,10 +1,12 @@
 ---
-title: "Tailscale and MagicDNS on OpenSUSE Tumbleweed"
+title: Tailscale and MagicDNS on OpenSUSE Tumbleweed
 description: 
-date: "2025-04-03T11:55:47+00:00"
+date: 2025-04-03T11:55:47+00:00
 draft: false
+tags:
+  - linux
+showTags: true
 ---
-
 ## Background
 
 I'm running Tailscale on my PC, my home media/backup server, and my smartphone. This allows me to have the three devices communicate with each other through a VPN.

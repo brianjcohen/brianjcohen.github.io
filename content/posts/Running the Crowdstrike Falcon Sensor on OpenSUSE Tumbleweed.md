@@ -1,10 +1,17 @@
 ---
-title: "Running the Crowdstrike Falcon Sensor on OpenSUSE Tumbleweed"
+title: Running the Crowdstrike Falcon Sensor on OpenSUSE Tumbleweed
 description: 
-date: "2025-04-03T11:51:56+00:00"
+date: 2025-04-03T11:51:56+00:00
 draft: false
+tags:
+  - linux
+showTags: true
 ---
+## Background
+
 Crowdstrike's Falcon sensor is packaged for a number of distributions, including SUSE Enterprise Linux, but not for OpenSUSE Tumbleweed.  This is how I got it going. I suspect this would work on other unsupported distributions, possibly including Leap.
+
+## Solution
 
 Crowdstrike falcon current documentation for Linux can be found here: 
 https://www.crowdstrike.com/tech-hub/endpoint-security/installing-falcon-sensor-for-linux/

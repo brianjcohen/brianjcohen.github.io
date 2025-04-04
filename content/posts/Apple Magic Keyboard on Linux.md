@@ -1,8 +1,11 @@
 ---
-title: "Apple Magic Keyboard on Linux"
+title: Apple Magic Keyboard on Linux
 description: 
-date: "2025-04-03T11:47:06+00:00"
+date: 2025-04-03T11:47:06+00:00
 draft: false
+tags:
+  - linux
+showTags: true
 ---
 ## Background
 

@@ -3,6 +3,9 @@ title: Snap on OpenSUSE Tumbleweed
 description: 
 date: 2025-04-03T15:22:12+00:00
 draft: false
+tags:
+  - linux
+showTags: true
 ---
 ## Background
 

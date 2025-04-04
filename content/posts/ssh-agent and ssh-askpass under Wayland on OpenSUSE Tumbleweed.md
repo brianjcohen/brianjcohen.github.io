@@ -3,6 +3,9 @@ title: Using ssh-agent and ssh-askpass under Wayland on OpenSUSE
 description: 
 date: 2025-04-03T09:54:33+00:00
 draft: false
+tags:
+  - linux
+showTags: true
 ---
 ## Background
 
