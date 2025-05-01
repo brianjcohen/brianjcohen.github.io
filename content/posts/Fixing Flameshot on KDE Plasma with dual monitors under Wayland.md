@@ -28,7 +28,7 @@ https://github.com/flameshot-org/flameshot/issues/2364#issuecomment-2845331480
 2. Flameshot should be in the list. Click the little icon directly to the left of the X in its row.
 3. Go to the Application tab.
 4. Add QT_QPA_PLATFORM=xcb to the Environment Variables line
-5. Click OK.)
+5. Click OK.
 6. Log out and back in.
 
 That's it. This will force Flameshot to use XWayland and resolves the dual-monitor weirdness.

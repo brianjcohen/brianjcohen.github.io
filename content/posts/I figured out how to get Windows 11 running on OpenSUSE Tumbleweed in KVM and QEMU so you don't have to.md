@@ -42,47 +42,32 @@ Obviously replace `your_username` with your Linux login name.
 
  Now, **reboot**.
 
-## Initial VM Setup
+## VM Setup
 
-From your application launcher, launch "Create Virtual Machines for Xen and KVM".
+I can't believe I'm doing this, but honestly this post here is much better than anything I could write up. Just follow this:
 
-If prompted, setup a connection to the QEMU/KVM user session and choose Autoconnect.
+https://sysguides.com/install-a-windows-11-virtual-machine-on-kvm
 
-In the dialog to create a new VM, that connection should already be chosen.
-
-Choose Local install media and your architecture (x86_64 for most of you).
-
-On the next screen, browse to the Windows ISO by clicking Browse... and then Browse Local. 
-
-For Memory and CPU I went with 16,384 and 4. 
-
-For Stroage I let it create a 128GB volume. 
-
-I gave it a simple name like 'windows' (I'm a stickler for future-proofing things when I name them. What if I named it Windows11 and subsequently upgraded it to Windows 13 or whatever? Cats and dogs living together, total societal meltdown.)
-
-Now launch Virtual Machine Manager if it's not already running. 
-
-Choose 'windows' and click Open.
-
-Click the little 'i' button to view the configuration. If you've used Virtualbox or VMWare before this should look pretty familiar. 
-
+If you're having trouble finding the VirtIO drivers, they are here:
 
 https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
 
-You need to set `firewall_backend = "iptables"` in `/etc/libvirt/network.conf`
+
+## If Networking is Broken
+
+On OpenSUSE Tumbleweed, for me, there was no Internet access for the guest no matter what I tried, until I found a very helpful tidbit in the superuser.com link cited in References.  I had to set `firewall_backend = "iptables"` in `/etc/libvirt/network.conf` and then restart libvertd:
 
 ```
 $ sudo systemctl restart libvirtd
 ```
 
 
+## If you really want to bypass online activation
 
-## If Networking is Broken
-
-See that part above where I set `firewall_backend = "iptables"` in `/etc/libvirt/network.com` ? In theory that should make it so that your VM has Internet access, and Setup should be able to make it all the way through.  In practice I actually didn't figure that fix out until later in the game, and Windows Setup actually stopped me at some point because it couldn't proceed without network activation. To work around that, on the "Let's connect you to a network" screen, I pressed Shift + F10 to raise a Command Prompt.  Then I typed OOBE\BYPASSNRO and hit enter. This will reboot the VM.  When Setup makes it back to that same page, this time it will have a button that says "I don't have Internet".  Click that and it will let you proceed by making a local account instead of signing into a Microsoft account.  Once Windows is running, you can proceed with installing the virtio drivers (see below).
+In theory that should make it so that your VM has Internet access, and Setup should be able to make it all the way through.  In practice I actually didn't figure that fix out until later in the game, and Windows Setup actually stopped me at some point because it couldn't proceed without network activation. To work around that, on the "Let's connect you to a network" screen, I pressed Shift + F10 to raise a Command Prompt.  Then I typed OOBE\BYPASSNRO and hit enter. This will reboot the VM.  When Setup makes it back to that same page, this time it will have a button that says "I don't have Internet".  Click that and it will let you proceed by making a local account instead of signing into a Microsoft account.  Once Windows is running, you can proceed with installing the virtio drivers (see below).
 
 
-References
+## References
 
 https://superuser.com/questions/1671932/unable-to-connect-to-internet-in-windows-10-vm-using-kvm-qemu
 https://cubiclenate.com/2019/06/11/virtual-machine-manager-with-qemu-kvm-on-opensuse-tumbleweed/ 
