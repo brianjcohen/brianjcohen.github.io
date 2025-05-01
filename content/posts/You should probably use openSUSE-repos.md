@@ -1,8 +1,8 @@
 ---
-title: "You should probably use openSUSE-repos"
+title: You should probably use openSUSE-repos
 description: 
-date: "2025-05-01T15:23:43+00:00"
-draft: true
+date: 2025-05-01T15:23:43+00:00
+draft: false
 tags:
   - linux
 showTags: true
