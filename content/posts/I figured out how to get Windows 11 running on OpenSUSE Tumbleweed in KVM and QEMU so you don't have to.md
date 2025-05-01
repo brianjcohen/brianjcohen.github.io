@@ -34,11 +34,15 @@ Go to yAST Control Center, Virtualization, Install Hypervisor and Tools, check t
 
 `sudo zypper install libvirt qemu virt-manager libvirt-daemon-driver-qemu qemu-kvm`
 
-Now add yourself to the newly setup groups:
+Now add yourself to the newly setup groups so that you can connect as a regular user.
 
 `sudo usermod -aG libvirt,kvm your_username`  
 
 Obviously replace `your_username` with your Linux login name.
+
+Also, there's a magic variable that has to be in your environment:
+
+`echo "export LIBVIRT_DEFAULT_URI='qemu:///system'" >> ~/.bashrc`
 
  Now, **reboot**.
 
@@ -66,8 +70,22 @@ $ sudo systemctl restart libvirtd
 
 In theory that should make it so that your VM has Internet access, and Setup should be able to make it all the way through.  In practice I actually didn't figure that fix out until later in the game, and Windows Setup actually stopped me at some point because it couldn't proceed without network activation. To work around that, on the "Let's connect you to a network" screen, I pressed Shift + F10 to raise a Command Prompt.  Then I typed OOBE\BYPASSNRO and hit enter. This will reboot the VM.  When Setup makes it back to that same page, this time it will have a button that says "I don't have Internet".  Click that and it will let you proceed by making a local account instead of signing into a Microsoft account.  Once Windows is running, you can proceed with installing the virtio drivers (see below).
 
+## Setup a desktop launcher directly to your Windows guest
+
+Create a file `~/.local/applications/windows-qemu.desktop`:
+
+`[Desktop Entry]`  
+`Name=Windows 11`  
+`Comment=Launch Windows VM`  
+`Exec=virt-manager --connect qemu:///system --show-domain-console windows`  
+`Icon=virt-manager`  
+`Terminal=false`  
+`Type=Application`  
+`Categories=System;Utility;Virtualization;`
+
 ## References
 
 https://superuser.com/questions/1671932/unable-to-connect-to-internet-in-windows-10-vm-using-kvm-qemu
 https://cubiclenate.com/2019/06/11/virtual-machine-manager-with-qemu-kvm-on-opensuse-tumbleweed/ 
 https://sysguides.com/install-kvm-on-linux
+https://sysguides.com/install-a-windows-11-virtual-machine-on-kvm

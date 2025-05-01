@@ -31,13 +31,11 @@ Okay let's wire this up.  First, we want to set some environment variables EARLY
 Create `/etc/profile.d/sshaskpass.sh`:
 ```
 #!/bin/bash
-export QT_QPA_PLATFORM="wayland"  
 export SSH_ASKPASS_REQUIRE=prefer
 export SSH_ASKPASS=/usr/libexec/ssh/ksshaskpass
 ```
 * `SSH_ASKPASS_REQUIRE` is set to `prefer`, which will be an instruction to `ssh` to make use of a graphical askpass utility (if it can) rather than prompting you in the terminal. 
 * `SSH_ASKPASS` is set to the full path of our favorite compatible askpass implementation.
-* `QT_QPA_PLATFORM` is set to `wayland` because... well actually I'm not really sure why, I copied this from somewhere.  
 
 Next, we create a `systemd` unit service for my user:
 
@@ -84,14 +82,14 @@ Next, we configure Plasma to load our keys into the agent at login. Of course yo
 In `~/.config/autostart/ssh-add.desktop`:
 ```
 [Desktop Entry]
-Exec=/home/brian/store/script/autostart-ssh-add.sh  
+Exec=/home/myuser/store/script/autostart-ssh-add.sh  
 Icon=dialog-scripts
 Name=ssh-add.sh
 Type=Application
 X-KDE-AutostartScript=true
 ```
 
-In `/home/brian/store/script/autostart-ssh-add.sh`:
+In `/home/myuser/store/script/autostart-ssh-add.sh`:
 
 ```
 #!/bin/bash
@@ -101,7 +99,7 @@ ssh-add -q ~/.ssh/id_ed25519_sk
 
 And mark as executable.  
 
-`chmod u+x /home/brian/store/script/autostart-ssh-add.sh`
+`chmod u+x /home/myuser/store/script/autostart-ssh-add.sh`
 
 Here I have it explicitly loading two of my keys, both of which are -SK keys tied to my Yubikey. You can put whatever keys you want here. 
 
