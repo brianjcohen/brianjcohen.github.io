@@ -22,7 +22,10 @@ https://forums.opensuse.org/t/question-correct-usage-of-new-zypper-parallel-down
 
 > Users of openSUSE-repos on Tumblweed gained `mediahandler=curl2` as part of the [repository urls](https://github.com/openSUSE/openSUSE-repos/blob/main/opensuse-tumbleweed-repoindex.xml) as well as preset `ZYPP_PCK_PRELOAD=1 via /etc/profile.d/opensuse_repos.sh` with the latest openSUSE-repos update.
 
+Curiously, `ZYPP_CURL2=1` appears to not really be a thing. So much for Reddit. It's a good thing we haven't trained all the world's LLM's on Reddit conversations. Right? Right?
+
 So I took the leap (no pun intended).
+
 ## Install it
 
 `sudo zypper install openSUSE-repos-Tumbleweed`
