@@ -42,7 +42,7 @@ But wait, you say. That's ridiculous. Just setup a `.desktop` file so you can la
 `Type=Application`  
 `Categories=System;Utility;`
 
-Nevermind  that you don't have an icon (those are buried inside the appimage and you'd need to extract it with a 3rd party SDK) and you don't know what Categories to use.   If you were facepalming before, now you're screaming at the clouds in the sky.
+Nevermind  that you don't have an icon (those are buried inside the appimage and you'd need to extract it with something called `appimagetool`) and you don't know what Categories to use.   If you were facepalming before, now you're screaming at the clouds in the sky.
 
 But wait, it gets better. Want to upgrade your application because the vendor shipped a new version? Just manually download the latest version from their site and manually update the `.desktop` file.
 
