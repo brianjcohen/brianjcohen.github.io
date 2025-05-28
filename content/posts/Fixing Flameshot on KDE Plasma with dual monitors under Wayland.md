@@ -9,7 +9,7 @@ showTags: true
 ---
 ## Background
 
-There are no shortage of reported issues with [Flameshot](https://flameshot.org) under Wayland.  Interestingly, they have an official [Wayland Help Page](https://flameshot.org/docs/guide/wayland-help/) that doesn't most of the concerns you see showing up in their [github](https://github.com/flameshot-org/flameshot/issues?q=is%3Aissue%20wayland). 
+There are no shortage of reported issues with [Flameshot](https://flameshot.org) under Wayland.  Interestingly, they have an official [Wayland Help Page](https://flameshot.org/docs/guide/wayland-help/) that doesn't address most of the concerns you see showing up in their [github](https://github.com/flameshot-org/flameshot/issues?q=is%3Aissue%20wayland). 
 
 In my setup, I have two monitors side-by-side. I'm running Wayland on OpenSUSE with KDE Plasma.
 
