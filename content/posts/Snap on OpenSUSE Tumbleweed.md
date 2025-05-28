@@ -34,3 +34,7 @@ and reboot:
 `sudo reboot`
 
 Now, the instructions on snapcraft.io, which include enabling a `snapd.apparmor` systemd service, actually make sense and work. 
+
+## Follow-Up
+
+I'm not running snapd on OpenSUSE anymore.  The only reason I was using it was for Obsidian, and that was to avoid having AppImages on my system. I've since started using appimaged which makes it much, much, easier to download, install, and update AppImages so I have Obsidian installed that way now.
