@@ -33,14 +33,14 @@ But wait, you say. That's ridiculous. Just setup a `.desktop` file so you can la
 1. Create ~/.local/share/applications/whatever.desktop
 2. Write in something like this:
 
-``[Desktop Entry]  
-Name=Whatever App  
-Comment=Launch Whatever App
-Exec=/home/me/Downloads/whatever-x.x.xx.AppImage
-Icon=
-Terminal=false  
-Type=Application  
-Categories=System;Utility;
+`[Desktop Entry]`  
+`Name=Whatever App`  
+`Comment=Launch Whatever App`
+`Exec=/home/me/Downloads/whatever-x.x.xx.AppImage`
+`Icon=`
+`Terminal=false`  
+`Type=Application`  
+`Categories=System;Utility;`
 
 Nevermind  that you don't have an icon (those are buried inside the appimage and you'd need to extract it with a 3rd party SDK) and you don't know what Categories to use.   If you were facepalming before, now you're screaming at the clouds in the sky.
 
