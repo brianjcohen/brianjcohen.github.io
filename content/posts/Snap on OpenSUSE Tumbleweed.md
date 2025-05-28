@@ -9,6 +9,8 @@ showTags: true
 ---
 ## Background
 
+*Edit on 5/28/2025: I'm not running snapd on OpenSUSE anymore.  The only reason I was using it was for Obsidian, and that was to avoid having AppImages on my system. I've since started using appimaged which makes it much, much, easier to download, install, and update AppImages so I have Obsidian installed that way now.  [Here is how I got that running](https://brianjcohen.github.io/posts/appimage-made-easy/).*
+
 Well, this was fun.  I don't use Snap for a lot, but Obsidian is an exception, so here I am, installing Snap.  Well, good news: Snapcraft has instructions for just my scenario!
 
 https://snapcraft.io/install/obsidian/opensuse
@@ -35,6 +37,3 @@ and reboot:
 
 Now, the instructions on snapcraft.io, which include enabling a `snapd.apparmor` systemd service, actually make sense and work. 
 
-## Follow-Up
-
-I'm not running snapd on OpenSUSE anymore.  The only reason I was using it was for Obsidian, and that was to avoid having AppImages on my system. I've since started using appimaged which makes it much, much, easier to download, install, and update AppImages so I have Obsidian installed that way now.
