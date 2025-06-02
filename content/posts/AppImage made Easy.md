@@ -10,7 +10,7 @@ showTags: true
 ## Background
 
 AppImage always struck me as a great idea in theory but a failure in practice.
-
+v
 The promise:  "Linux apps that run anywhere".  "Download an application, make it executable, and run! No need to install. No system libraries or system preferences are altered."  Both of these quotes are from appimage.org.
 
 Reality of installing an AppImage

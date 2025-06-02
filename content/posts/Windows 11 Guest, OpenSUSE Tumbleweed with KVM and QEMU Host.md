@@ -65,6 +65,31 @@ On OpenSUSE Tumbleweed, for me, there was no Internet access for the guest no ma
 $ sudo systemctl restart libvirtd
 ```
 
+## Ah Crap
+
+A few weeks after getting this running, after many reboots and an upgrade of QEMU, I tried firing up my VM and I got this:
+
+`Error starting domain: Requested operation is not valid: network 'default' is not active`
+
+`Traceback (most recent call last):`
+  `File "/usr/share/virt-manager/virtManager/asyncjob.py", line 88, in cb_wrapper`
+    `callback(asyncjob, *args, **kwargs)`
+  `File "/usr/share/virt-manager/virtManager/asyncjob.py", line 124, in tmpcb`
+    `callback(*args, **kwargs)`
+  `File "/usr/share/virt-manager/virtManager/libvirtobject.py", line 83, in newfn`
+    `ret = fn(self, *args, **kwargs)`
+  `File "/usr/share/virt-manager/virtManager/domain.py", line 1479, in startup`
+    `self._backend.create()`
+  `File "/usr/lib/python2.7/site-packages/libvirt.py", line 1062, in create`
+    `if ret == -1: raise libvirtError ('virDomainCreate() failed', dom=self)`
+`libvirtError: Requested operation is not valid: network 'default' is not active`
+
+I resolved it this way:
+
+`virsh net-autostart default`
+`virsh net-start default`
+
+(do not run those as root)
 
 ## If you really want to bypass online activation
 
