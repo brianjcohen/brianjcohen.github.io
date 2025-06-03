@@ -65,6 +65,23 @@ On OpenSUSE Tumbleweed, for me, there was no Internet access for the guest no ma
 $ sudo systemctl restart libvirtd
 ```
 
+## If you really want to bypass online activation
+
+In theory that should make it so that your VM has Internet access, and Setup should be able to make it all the way through.  In practice I actually didn't figure that fix out until later in the game, and Windows Setup actually stopped me at some point because it couldn't proceed without network activation. To work around that, on the "Let's connect you to a network" screen, I pressed Shift + F10 to raise a Command Prompt.  Then I typed OOBE\BYPASSNRO and hit enter. This will reboot the VM.  When Setup makes it back to that same page, this time it will have a button that says "I don't have Internet".  Click that and it will let you proceed by making a local account instead of signing into a Microsoft account.  Once Windows is running, you can proceed with installing the virtio drivers.
+
+## Setup a desktop launcher directly to your Windows guest
+
+Create a file `~/.local/applications/windows-qemu.desktop`:
+
+`[Desktop Entry]`  
+`Name=Windows 11`  
+`Comment=Launch Windows VM`  
+`Exec=virt-manager --connect qemu:///system --show-domain-console windows`  
+`Icon=virt-manager`  
+`Terminal=false`  
+`Type=Application`  
+`Categories=System;Utility;Virtualization;`
+
 ## Ah Crap
 
 A few weeks after getting this running, after many reboots and an upgrade of QEMU, I tried firing up my VM and I got this:
@@ -91,22 +108,26 @@ I resolved it this way:
 
 (do not run those as root)
 
-## If you really want to bypass online activation
+## Ah Crap, Part 2
 
-In theory that should make it so that your VM has Internet access, and Setup should be able to make it all the way through.  In practice I actually didn't figure that fix out until later in the game, and Windows Setup actually stopped me at some point because it couldn't proceed without network activation. To work around that, on the "Let's connect you to a network" screen, I pressed Shift + F10 to raise a Command Prompt.  Then I typed OOBE\BYPASSNRO and hit enter. This will reboot the VM.  When Setup makes it back to that same page, this time it will have a button that says "I don't have Internet".  Click that and it will let you proceed by making a local account instead of signing into a Microsoft account.  Once Windows is running, you can proceed with installing the virtio drivers.
+If you're reading this, you are (like me) probably a desktop Linux user who occasionally needs Windows. That means you probably boot up the Windows guest somewhat, or very, infrequently.
 
-## Setup a desktop launcher directly to your Windows guest
+Windows assumes it's your primary OS, installed on your hard disk, always running. As a result it performs a lot of background work in the, uh, background while you, uh, work. For speed, you know. 
 
-Create a file `~/.local/applications/windows-qemu.desktop`:
+That means if it's been off for weeks, when you boot it back up, it's going to be "time" for a lot of deferred background tasks to run. Like built-in malware detection and Windows Update. 
 
-`[Desktop Entry]`  
-`Name=Windows 11`  
-`Comment=Launch Windows VM`  
-`Exec=virt-manager --connect qemu:///system --show-domain-console windows`  
-`Icon=virt-manager`  
-`Terminal=false`  
-`Type=Application`  
-`Categories=System;Utility;Virtualization;`
+This will peg your guest, and host, CPU for a while. Your PC's fan will probably sound like an FA/18 Hornet.  In Windows Task Manager, you'll probably see "Background Task Host" eating 90% CPU. That will eventually give way to "Service Host: Windows Update".  Just give it time, it will finish and calm down. 
+
+## Ah Crap, Part 3
+
+Some extra stuff I've done:
+
+* On the Windows 11 guest:
+	* The sysguides reference has you turning off everything in "Performance Options" by choosing "Adjust by best performance".  I actually re-enabled "Smooth edges of screen fonts" because otherwise you lose anti-aliasing and everything looks bad.
+	* I found that one or more rogue extensions were causing my browser (Brave) to consume high CPU on the guest. I disabled or removed all the extensions I didn't need, which resolved that problem.
+	* I found the weather and news "widgets" were sluggish and pointless and using unnecessary memory and CPU so I disabled them by right-clicking the Taskbar > Taskbar Settings > Uncheck "Widgets". I also unchecked "Task View" and set "Search" to "Hide" while I was at it. As far as I'm concerned, Windows peaked in 2007 and I'm doing my best to return it to that. 
+* On the host:
+	* While the guest is off, in the guest configuration, under "Display Spice" change Listen Type to "None" and check "OpenGL". Then under Video Virtio, enable "3D Acceleration". 
 
 ## References
 
