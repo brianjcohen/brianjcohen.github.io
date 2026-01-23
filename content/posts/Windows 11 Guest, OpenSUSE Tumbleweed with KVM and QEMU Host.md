@@ -127,7 +127,7 @@ Some extra stuff I've done:
 	* I found that one or more rogue extensions were causing my browser (Brave) to consume high CPU on the guest. I disabled or removed all the extensions I didn't need, which resolved that problem.
 	* I found the weather and news "widgets" were sluggish and pointless and using unnecessary memory and CPU so I disabled them by right-clicking the Taskbar > Taskbar Settings > Uncheck "Widgets". I also unchecked "Task View" and set "Search" to "Hide" while I was at it. As far as I'm concerned, Windows peaked in 2007 and I'm doing my best to return it to that. 
 * On the host:
-	* While the guest is off, in the guest configuration, under "Display Spice" change Listen Type to "None" and check "OpenGL". Then under Video Virtio, enable "3D Acceleration". 
+	* You can enable 3D graphics acceleration, however it will disable the ability to "suspend" the VM via Power Off > Save.  To set this up, while the guest is off, in the guest configuration, under "Display Spice" change Listen Type to "None" and check "OpenGL". Then under Video Virtio, enable "3D Acceleration". 
 
 ## References
 
