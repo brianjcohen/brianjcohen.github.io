@@ -1,3 +1,13 @@
+---
+title: "Walled Garden Funkyness on Linux"
+description: 
+date: 2026-01-23T09:04:44-05:00
+draft: false
+tags:
+  - linux
+showTags: true
+---
+
 # Background
 
 Most days I work at my little office in town. It's a nice, quiet space I share with a friend of mine who's a psychotherapist. We each have closed-door offices, we get along well, and the fiber-optic gigabit is pretty plum.  But, some days I need to break the cycle, so I go to a co-working space run by another family friend. 
@@ -18,11 +28,12 @@ Subsequent visits don't go so well. My PC remembers the network and reconnects t
 
 If this is happening to you, there's a quick fix:
 
-1. Turn off wireless.
-2. Delete the connection profile for this particular wireless network.
-3. Restart NetworkManager
-4. Turn wireless back on
-5. Click on the wireless network and set it up fresh. You should get the "Log In" toast and this time conncheck.opensuse.org should redirect you to the walled garden
+1. Stop NetworkManager
+2. Turn off wireless.
+3. Delete the connection profile for this particular wireless network.
+4. Restart NetworkManager
+5. Turn wireless back on
+6. Click on the wireless network and set it up fresh. You should get the "Log In" toast and this time conncheck.opensuse.org should redirect you to the walled garden
 
 
 ## What actually happened?
@@ -32,7 +43,7 @@ Modern NetworkManager (which openSUSE Tumbleweed uses) randomizes your MAC addre
 1. **First visit**: NetworkManager assigns a random MAC (let's call it `AA:BB:CC:11:22:33`). You authenticate through the captive portal. The Ruckus controller records: "MAC `AA:BB:CC:11:22:33` has agreed to terms, allow traffic."
 2. **Next visit (days/weeks later)**: NetworkManager reconnects to the saved network profile, but generates a _different_ random MAC (`AA:BB:CC:44:55:66`). The Ruckus controller has never seen this MAC before—you're unauthenticated.
 3. **The failure**: NetworkManager sees a _known_ network profile and assumes things should "just work." NetworkManager tries to reach a webserver after connecting to detect if it's behind a captive portal [ArchWiki](https://wiki.archlinux.org/title/NetworkManager), but there's a timing/state mismatch. The captive portal detection either doesn't trigger properly, or triggers but the redirect fails because NetworkManager is in a confused state about this "known" network.
-4. **Why your workaround works**: Deleting the profile forces NetworkManager to treat it as a completely new network, running fresh captive portal detection from scratch.
+4. **Why the workaround works**: Deleting the profile forces NetworkManager to treat it as a completely new network, running fresh captive portal detection from scratch.
 
 ## The Better Fix
 
