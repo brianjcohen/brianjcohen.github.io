@@ -1,10 +1,7 @@
 baseURL = 'https://brianjcohen.github.io/'
 languageCode = 'en-us'
 title = 'Thinking and Fixing'
-theme = 'typo'
-[caches]
-  [caches.images]
-    dir = ':cacheDir/images'
+theme = 'beautifulhugo'
 
 # Google analytics code
 # googleAnalytics = "G-xxxxxxxxx"
@@ -12,73 +9,34 @@ theme = 'typo'
 [taxonomies]
 tag = 'tags'
 
-[params]
-# Meta description
-description = "Thoughts I've had and things I've learned"
+[Params]
+subtitle = "I'm a Software Engineer in the State of New York, USA. Posts are mostly about Linux on the desktop but, hey, you never know."
+mainSections = ["posts"]
+readingTime = true
+wordCount = true
+socialShare = true
+showRelatedPosts = true
 
-# Appearance settings
-theme = 'auto'
-colorPalette = 'default'
-hideHeader = false
+[Params.author]
+name = "Brian Cohen"
+linkedin = "brian-j-cohen"
+github = "brianjcohen"
 
-# Intro on main page, content is markdown
-homeIntroTitle = ''
-homeIntroContent = """
-I'm a Software Engineer in the State of New York, USA.  Posts are mostly about Linux on the desktop but, hey, you never know.
-"""
-
-# Collection to display on home
-homeCollectionTitle = 'Posts'
-homeCollection = 'posts'
-
-# Lists parameters
-paginationSize = 100
-listSummaries = true
-listDateFormat = '2 Jan 2006'
-
-# Breadcrumbs
-[params.breadcrumbs]
-enabled = true
-showCurrentPage = true
-home = "Home"
-
-# Social icons
-[[params.social]]
-name = "linkedin"
-url = "https://www.linkedin.com/in/brian-j-cohen/"
-
-#[[params.social]]
-#name = "medium"
-#url = "https://medium.com/@user"
-
-[[params.social]]
-name = "github"
-url = "https://github.com/brianjcohen"
-
-# Main menu pages
-[[params.menu]]
-name = "home"
+[[menu.main]]
+name = "Home"
 url = "/"
+weight = 1
 
-[[params.menu]]
-name = "posts"
+[[menu.main]]
+name = "Posts"
 url = "/posts"
+weight = 2
 
-#[[params.menu]]
-#name = "about"
-#url = "/about"
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
 
-# Syntax highlight on code blocks
 [markup]
 [markup.highlight]
-style = 'algol'
-
-# Giscus comments
-[params.giscus]
-enable = false
-repo = "user/repo"
-repoid = "repoId"
-category = "General"
-categoryid = "categoryId"
-mapping = "pathname"
-theme = "preferred_color_scheme"
+style = 'monokai'
