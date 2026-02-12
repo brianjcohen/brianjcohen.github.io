@@ -20,7 +20,7 @@ Since we're a quarter of the way through the 21st century, you would think that 
 
 ## What happens
 
-The first time I ever visited this site with this machine, everything worked great. I selected the network from my available wireless networks. I was prompted to "Log In" to the network by KDE Plasma's network widget. This fires up conncheck.opensuse.org in a web browser, which redirects me to the walled garden page. I check the box, I click submit and I'm online.
+The first time I ever visited this site with this machine, everything worked great. I selected the network from my available wireless networks. I was prompted to "Log In" to the network by KDE Plasma's network widget. This fires up http://conncheck.opensuse.org in a web browser, which redirects me to the walled garden page. I check the box, I click submit and I'm online.
 
 Subsequent visits don't go so well. My PC remembers the network and reconnects to it automatically. I may (or may not) be prompted with the 'Login In' toast, depending on how long it's been since I connected.  If I am prompted, clicking it will attempt to load conncheck.opensuse.org in a browser, but the redirection will never occur. I will never see the walled garden page. 
 
