@@ -1,6 +1,6 @@
 ---
 title: Fixing Flameshot on KDE Plasma with dual monitors under Wayland
-description: 
+description: Fixing Flameshot's broken overlay on multi-monitor KDE Plasma under Wayland by forcing XWayland mode.
 date: 2025-04-23T09:29:52+00:00
 draft: false
 tags:

@@ -1,6 +1,6 @@
 ---
 title: Apple Magic Keyboard on Linux
-description: 
+description: How to pair Apple's Bluetooth Magic Keyboard on Linux, plus fixing the Bluetooth-not-available-at-login issue on OpenSUSE Tumbleweed.
 date: 2025-04-03T11:47:06+00:00
 draft: false
 tags:

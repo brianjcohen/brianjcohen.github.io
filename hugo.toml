@@ -10,7 +10,10 @@ theme = 'beautifulhugo'
 tag = 'tags'
 
 [Params]
+homeTitle = "Thinking and Fixing"
+description = "Thoughts on Linux, desktop computing, and the things I've learned fixing them"
 subtitle = "I'm a Software Engineer in the State of New York, USA. Posts are mostly about Linux on the desktop but, hey, you never know."
+logo = "images/cover.jpg"
 mainSections = ["posts"]
 readingTime = true
 wordCount = true

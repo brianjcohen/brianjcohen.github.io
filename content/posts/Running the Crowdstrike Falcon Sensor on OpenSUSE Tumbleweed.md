@@ -1,6 +1,6 @@
 ---
 title: Running the Crowdstrike Falcon Sensor on OpenSUSE Tumbleweed
-description: 
+description: Installing Crowdstrike Falcon Sensor on unsupported OpenSUSE Tumbleweed by resolving the missing OpenSSL 1.1 dependency.
 date: 2025-04-03T11:51:56+00:00
 draft: false
 tags:

@@ -1,6 +1,6 @@
 ---
 title: You should probably use openSUSE-repos
-description: 
+description: Why you should switch to openSUSE-repos for dynamic repository management and parallel package downloads on Tumbleweed.
 date: 2025-05-01T15:23:43+00:00
 draft: false
 tags:

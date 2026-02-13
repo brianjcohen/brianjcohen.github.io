@@ -1,6 +1,6 @@
 ---
 title: Windows 11 Guest, OpenSUSE Tumbleweed with KVM and QEMU Host
-description: 
+description: Running Windows 11 as a KVM/QEMU virtual machine on OpenSUSE Tumbleweed, including setup, networking fixes, and performance tips.
 date: 2025-05-01T09:10:52+00:00
 draft: false
 tags:

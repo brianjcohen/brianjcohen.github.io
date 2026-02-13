@@ -1,6 +1,6 @@
 ---
 title: Using ssh-agent and ssh-askpass under Wayland on OpenSUSE
-description: 
+description: Setting up ssh-agent with graphical passphrase prompts under Wayland on OpenSUSE Tumbleweed with KDE Plasma and systemd.
 date: 2025-04-03T09:54:33+00:00
 draft: false
 tags:

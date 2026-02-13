@@ -1,6 +1,6 @@
 ---
 title: Snap on OpenSUSE Tumbleweed
-description: 
+description: Installing Snap on OpenSUSE Tumbleweed by switching the security module from SELinux back to AppArmor.
 date: 2025-04-03T15:22:12+00:00
 draft: false
 tags:

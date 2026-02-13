@@ -1,6 +1,6 @@
 ---
 title: "Walled Garden Funkyness on Linux"
-description: 
+description: Fixing captive portal authentication failures on Linux caused by NetworkManager's MAC address randomization.
 date: 2026-01-23T09:04:44-05:00
 draft: false
 tags:

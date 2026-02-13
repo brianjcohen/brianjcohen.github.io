@@ -1,6 +1,6 @@
 ---
 title: Tailscale and MagicDNS on OpenSUSE Tumbleweed
-description: 
+description: Getting Tailscale's MagicDNS working on OpenSUSE Tumbleweed by switching from NetworkManager's DNS handling to systemd-resolved.
 date: 2025-04-03T11:55:47+00:00
 draft: false
 tags:

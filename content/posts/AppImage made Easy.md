@@ -1,6 +1,6 @@
 ---
 title: AppImage made Easy
-description: 
+description: Using appimaged to automatically manage AppImages on OpenSUSE Tumbleweed — desktop launchers, updates, and icon extraction handled for you.
 date: 2025-05-28T10:20:21+00:00
 draft: false
 tags:
