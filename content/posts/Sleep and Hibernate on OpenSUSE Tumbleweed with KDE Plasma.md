@@ -84,7 +84,7 @@ The important bits for sleep and hibernate:
 
 - **`nvme.noacpi=1`** tells the NVMe driver not to apply ACPI quirks. This helps with D3 suspend/resume because it tells the driver to request suspend in the standard way, rather than applying workarounds for hardware that doesn't actually need them. More detail [here](https://www.reddit.com/r/archlinux/comments/12abf5e/what_does_nvmenoacpi1_do/).
 
-- **`acpi_osi='Windows 2020'`** tells the BIOS that we're a recent version of Windows, which can unlock power management features that the BIOS might otherwise hide from Linux. A good explanation of this flag is on the [Manjaro forum](https://forum.manjaro.org/t/how-to-choose-the-proper-acpi-kernel-argument/1405), although honestly I think there's a decent amount of cargo-culting going on here and there's a good chance we don't need it at all.
+- **`acpi_osi='Windows 2020'`** tells the BIOS that we're a recent version of Windows, which can unlock power management features that the BIOS might otherwise hide from Linux. A good explanation of this flag is on the [Manjaro forum](https://forum.manjaro.org/t/how-to-choose-the-proper-acpi-kernel-argument/1405), although honestly I think a lot of people are just copying this from each other without questioning it, and there's a good chance we don't need it at all.
 
 After making changes to `/etc/default/grub`, make them take effect:
 
