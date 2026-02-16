@@ -21,6 +21,8 @@ Brave Shields is aggressive by default, and that's kind of the point. It blocks 
 
 That question became a constant companion. Every time I hit a problem on a website, I'd have to go through the ritual: disable Shields for this site, reload, try again. If it works now, great, the site needed a third-party script that Shields was blocking. If it still doesn't work, re-enable Shields and go actually debug the problem. This tax on my attention added up, and over time I found myself reflexively disabling Shields on more and more sites, which kind of defeats the purpose.
 
+And here's the thing about eroded trust: it starts to color everything. I was having intermittent issues with audio input on video calls — I'd join a meeting and nobody could hear me, despite all the settings at the browser, webapp, and OS level being correct. Restarting the browser would often (but not always) fix it, especially if I had multiple windows open. I never definitively proved this was a Brave issue. It could have been PipeWire, it could have been Wayland, it could have been the webapp. But the fact that my first instinct was to blame the browser tells you where my head was at.
+
 ## The passkey problem
 
 The issue that finally pushed me over the edge was passkeys. I use Bitwarden as my password manager, and I've been migrating my most critical logins to passkeys stored in Bitwarden. This works flawlessly in Chrome — when a site requests passkey authentication, Bitwarden's browser extension intercepts it and presents its own UI for selecting the passkey.
