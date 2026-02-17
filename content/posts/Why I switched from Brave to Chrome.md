@@ -49,6 +49,14 @@ Things just work. That's it. That's the whole value proposition. Sites load corr
 
 On desktop, I run uBlock Origin Lite (the Manifest V3 version) which gives me most of the ad blocking and tracker prevention I had with Brave. It's not as aggressive as Shields, and that turns out to be a feature — it blocks the obvious stuff without breaking site functionality.
 
+## The fingerprinting paradox
+
+Brave also aggressively prevents browser fingerprinting, which is something I can absolutely get behind in principle. Commercial sites use fingerprinting to build a digital profile of you and sell it to advertisers, and anything that makes that harder sounds good on paper.
+
+But fingerprinting is also how most "remember me" functionality works. When a site remembers your device so you don't have to re-authenticate every time, that's fingerprinting. Brave's countermeasures break that too. It's easy to say that re-authenticating every time is a small price to pay for privacy. But all that time spent re-authenticating to all those sites after short timeouts, year after year after year, adds up and gets pretty tiresome.
+
+Meanwhile, for the entities that are truly hell-bent on tracking you, it's not clear that even Brave's countermeasures are foolproof. Sites like [fingerprint.goldenowl.ai](https://fingerprint.goldenowl.ai/) demonstrate techniques for identifying browsers despite anti-fingerprinting measures. I'm not sure how difficult or commonplace these techniques are in the wild, but it does raise the question: if determined trackers can work around the protections anyway, who exactly is being inconvenienced here — them, or me?
+
 ## The uncomfortable truth
 
 The privacy-focused browser space is full of genuine, well-intentioned projects. Brave is one of them. But there's a fundamental tension between blocking the tracking and advertising infrastructure that most of the web is built on, and having that web work reliably. Every blocked script is a potential broken feature. Every fingerprinting countermeasure is a potential compatibility issue.
