@@ -1,7 +1,7 @@
 ---
 title: The stale checksum that taught me zypper wasn't refreshing my repos
 description: A digest verification error led me to discover that zypper's autorefresh is off by default, my mental model of zypper dup was wrong, and several of my repos had been quietly rotting for months.
-date: 2026-06-02T09:30:00-04:00
+date: 2026-06-02T09:00:00-04:00
 draft: false
 tags:
   - linux
