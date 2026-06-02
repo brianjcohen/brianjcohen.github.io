@@ -10,6 +10,53 @@ showTags: true
 
 # Background
 
+3/6/2026:
+
+Since a reboot fixes it but a NetworkManager restart doesn't, I'd focus on what survives NM restarts:
+
+**Things to try next time it happens (before rebooting):**
+
+bash
+
+```bash
+# Check if you even have an IP
+ip addr show wlan0
+
+# Check if you have a route to the gateway
+ip route
+
+# Try restarting systemd-resolved
+sudo systemctl restart systemd-resolved
+
+# Flush the DNS cache specifically
+sudo resolvectl flush-caches
+
+# Check what DNS servers you've been assigned
+resolvectl status
+```
+
+If restarting `systemd-resolved` fixes it, we've found the culprit. If not, try also restarting `wpa_supplicant` along with NetworkManager.
+
+Can you capture the output of `ip addr`, `ip route`, and `resolvectl status` next time you're in the broken state?
+
+**Next time you connect, can you immediately run:**
+
+bash
+
+```bash
+# What DNS servers do you have?
+resolvectl status
+
+# Is IPv6 being assigned?
+ip -6 addr show wlan0
+
+# Can you reach the gateway?
+ip route
+ping -c 2 $(ip route | grep default | awk '{print $3}')
+```
+
+
+
 Most days I work at my little office in town. It's a nice, quiet space I share with a friend of mine who's a psychotherapist. We each have closed-door offices, we get along well, and the fiber-optic gigabit is pretty plum.  But, some days I need to break the cycle, so I go to a co-working space run by another family friend. 
 
 At the co-working space, Internet access is provided by a non-encrypted network. The experience is a classic walled garden: you connect your device to the public network, you try to access something on the web and it redirects you to the internal login page (which reveals a Ruckus Networks controller at the helm). At this place all that means is you click on an "I agree to the terms" checkbox and a Submit button, and now you're online.  
