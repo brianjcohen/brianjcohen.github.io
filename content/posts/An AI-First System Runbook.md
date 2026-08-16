@@ -2,7 +2,7 @@
 title: An AI-First System Runbook
 description: Claude audited my Tumbleweed machine, wrote the runbook and the backup script, and keeps both maintained. If the disk dies, Claude is also the one that's supposed to read the runbook and rebuild the machine.
 date: 2026-08-16T12:00:00-04:00
-draft: true
+draft: false
 tags:
   - linux
   - ai
