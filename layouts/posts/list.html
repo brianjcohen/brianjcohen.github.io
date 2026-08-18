@@ -1,0 +1,33 @@
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ with .Content }}
+          <div class="well">
+            {{ . }}
+          </div>
+        {{ end }}
+        <style>
+          .archive-year { margin: 30px 0 5px; }
+          .archive-list { list-style: none; padding-left: 0; margin-bottom: 0; }
+          .archive-item { display: flex; align-items: baseline; gap: 15px; padding: 4px 0; }
+          .archive-date { color: #808080; font-family: monospace; white-space: nowrap; }
+          .archive-title { font-family: 'Lora', 'Times New Roman', serif; font-size: 19px; }
+        </style>
+        <div class="post-archive">
+          {{ range .Pages.GroupByDate "2006" }}
+            <h2 class="archive-year">{{ .Key }}</h2>
+            <ul class="archive-list">
+              {{ range .Pages }}
+                <li class="archive-item">
+                  <span class="archive-date">{{ .Date.Format "Jan 02" }}</span>
+                  <a class="archive-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
